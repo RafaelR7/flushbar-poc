@@ -57,11 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
         borderRadius: 8,
         forwardAnimationCurve: Curves.fastLinearToSlowEaseIn,
         reverseAnimationCurve: Curves.decelerate,
-        icon: Icon(
-          Icons.info_outline,
-          size: 28.0,
-          color: Colors.blue[300],
-        ),
+        // icon: Icon(
+        //   Icons.info_outline,
+        //   size: 28.0,
+        //   color: Colors.white,
+        // ),
         title: 'This is a floating Flushbar',
         messageText: Text(
           'Lorem ipsum dolor sit amet',
@@ -98,7 +98,7 @@ class DefaultSnackbarButtom extends StatelessWidget {
   void showDefaultSnackbar(BuildContext context) {
     Scaffold.of(context).showSnackBar(
       SnackBar(
-        duration: Duration(milliseconds: 2500),
+        duration: Duration(milliseconds: 1500),
         content: Text(
           'Default snackbar',
           key: Key("snackbar_text"),
