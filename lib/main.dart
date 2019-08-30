@@ -31,13 +31,18 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Flushbar test"),
       ),
       body: Center(
-        child: RaisedButton(
-          key: Key("flushbar_buttom"),
-          child: Text(
-            'Flushbar',
-            key: Key("buttom_text"),
-          ),
-          onPressed: () => showFloatingFlushbar(context),
+        child: Column(
+          children: <Widget>[
+            RaisedButton(
+              key: Key("flushbar_buttom"),
+              child: Text(
+                'Flushbar',
+                key: Key("flushbar_buttom_text"),
+              ),
+              onPressed: () => showFloatingFlushbar(context),
+            ),
+            new DefaultSnackbarButtom(),
+          ],
         ),
       ),
     );
@@ -61,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         messageText: Text(
           'Lorem ipsum dolor sit amet',
           style: TextStyle(color: Colors.white),
-          key: Key('messsage_text'),
+          key: Key('flushbar_text'),
         ),
         duration: Duration(milliseconds: 1500),
         onStatusChanged: (FlushbarStatus status) {
@@ -71,5 +76,34 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       )..show(context);
     }
+  }
+}
+
+class DefaultSnackbarButtom extends StatelessWidget {
+  const DefaultSnackbarButtom({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      key: Key("snackbar_buttom"),
+      child: Text(
+        'Default snackbar',
+      ),
+      onPressed: () => showDefaultSnackbar(context),
+    );
+  }
+
+  void showDefaultSnackbar(BuildContext context) {
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(milliseconds: 2500),
+        content: Text(
+          'Default snackbar',
+          key: Key("snackbar_text"),
+        ),
+      ),
+    );
   }
 }
